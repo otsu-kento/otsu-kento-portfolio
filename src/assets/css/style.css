@@ -529,10 +529,6 @@ header {
 }
 
 @media screen and (max-width: 768px) {
-    .block-main {
-        
-    }
-
     .first-view{
         background-color: rgb(255, 162, 129);
         width: auto;
