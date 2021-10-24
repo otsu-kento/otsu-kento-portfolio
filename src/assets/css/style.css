@@ -42,7 +42,7 @@ header {
 }
 
 .header-title {
-    width: 100%;
+    width: 50%;
     text-align: left;
 }
 
@@ -55,73 +55,117 @@ header {
     border-bottom:2px solid rgb(255, 113, 61);
 }
 
-.menu-bar {
-    width: 100%;
-    text-align: right;
-}
-
-.menu-bar a {
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    text-decoration: none;
-    padding-right:10px ;
-}
-
-.menu-bar a:hover {
-    color: rgb(255, 113, 61);;
-}
-
-@media screen and (max-width: 768px) {
-    .block-header {
-        z-index: 9999;
-        background-color: rgb(255, 162, 129);
-        border-bottom: 5px solid rgb(255, 113, 61);
-        width: 100%;
-        padding: 10px;
-        position: fixed;
-        top: 0; 
-        left: 0;
+@media(min-width: 768px){
+    /* PCではボタン非表示 */
+    #navbtn{
+        display:none;
     }
-    
-    .my-logo {
-        margin-right: 10px;
+    /* ヘッダーは横並び */
+    header{
+        display: flex;
+        align-items: center;
     }
-    
-    .my-logo img {
-        height: 40px;
+    /* メニューを右に寄せる */
+    .nav{
+      /* 右寄せ */
+        margin-left: auto;
     }
-    
-    .header-title {
-        width: auto;
-        text-align: left;
+    .nav ul{
+        display: flex;
+        list-style:none
     }
-    
-    .header-title-name {
+    .nav ul li:not(:first-child){
+        margin-left:20px;
+    }
+    .nav ul li a { 
         color: white;
-        font-size: 25px;
+        font-size: 20px;
         font-weight: bold;
         letter-spacing: 1px;
         text-decoration: none;
-        border-bottom:2px solid rgb(255, 113, 61);
     }
-    
-    .menu-bar {
+}
+
+@media (max-width:767px){
+    html,body{
+        overflow-x: hidden;
+    }
+    .nav{
+        position: fixed;
+        top: 0;
+        left: 100%;
         width: 100%;
-        text-align: right;
+        height: 50px;
+        background: rgba(78, 78, 78, 0.9);
+        color: #ffffff;
+        display: flex;
+        margin-top: 78px;
+        align-items: center;
+        justify-content: center;
+        /* 右からスライド */
+        transition: left 0.5s;
+        z-index: -1;
     }
-    
-    .menu-bar a {
+    .nav ul{
+        display: flex;
+        list-style:none;
+    }
+    .nav li:not(:first-child){
+        margin-left: 10px;
+    }
+    .nav a{
         color: white;
         font-size: 15px;
         font-weight: bold;
         letter-spacing: 1px;
         text-decoration: none;
-        padding-right:10px ;
     }
 }
+/* ナビゲーションボタン（開く） */
+#navbtn{
+    position: fixed;
+    top: 25px;
+    right: 15px;
+    padding: 0;
+    outline: none;
+    border: none;
+    background: none;
+    width: 50px;
+    height: 20px;
+    cursor: pointer;
+}
 
+#navbtn::before,
+#navbtn::after{
+    content : '';
+    display: block;
+    height: 1px;
+    background-color: white;
+    transform: translateY(20px);
+    transition: 0.3s ease-in-out;
+}
+
+#navbtn::before{
+    transform: translateY(-20px);
+    box-shadow: 0 20px white;
+}
+
+/* ナビゲーションボタン（閉じる） */
+.open #navbtn{
+    z-index: 100;
+}
+.open #navbtn::before{
+    transform: rotate(-45deg);
+    box-shadow: none;
+}
+.open #navbtn::after{
+    transform: rotate(45deg);
+    box-shadow: none;
+}
+/* ナビゲーションメニュー 開いた時*/
+.open .nav{
+    left: 0;
+}
 
 /* メイン */
 .block-main {

@@ -22,12 +22,15 @@
                 <div class="header-title">
                     <label class="header-title-name">Portfolio</label>
                 </div>
-                <div class="menu-bar">
-                    <a href="#home-link">Home</a>
-                    <a href="#about-link">About</a>
-                    <a href="#projects-link">Projects</a>
-                    <a href="#contact-link">Contact</a>
-                </div>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="#home-link">Home</a></li>
+                        <li><a href="#about-link">About</a></li>
+                        <li><a href="#projects-link">Projects</a></li>
+                        <li><a href="#contact-link">Contact</a></li>
+                    </ul>
+                </nav>
+                <button type="button" id="navbtn"></button>
             </div>
         </div>
     </header>
@@ -238,5 +241,11 @@
             <p>© Kento Otsubo All rights reserved</p>
         </div>
     </footer>
+
+    <script>
+        document.getElementById("navbtn").onclick = function(){
+            document.querySelector('header').classList.toggle('open');
+        }
+    </script>
 </body>
 </html>
